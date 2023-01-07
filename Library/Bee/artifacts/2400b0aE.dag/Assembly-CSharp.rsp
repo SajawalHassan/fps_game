@@ -352,9 +352,12 @@
 -r:"Library/Bee/artifacts/2400b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/2400b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Input/PlayerInput.cs"
-"Assets/Scripts/InputManager.cs"
-"Assets/Scripts/PlayerLook.cs"
-"Assets/Scripts/PlayerMotor.cs"
+"Assets/Scripts/Enemy/Enemy.cs"
+"Assets/Scripts/Gun/BaseGun.cs"
+"Assets/Scripts/Gun/BaseGunInfo.cs"
+"Assets/Scripts/Input/InputManager.cs"
+"Assets/Scripts/Player/PlayerLook.cs"
+"Assets/Scripts/Player/PlayerMotor.cs"
 -langversion:9.0
 
 /deterministic
