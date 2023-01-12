@@ -6,32 +6,34 @@ using TMPro;
 public class BaseGun : MonoBehaviour
 {
     private PlayerInput playerInput;
-    private PlayerInput.OnFootActions onFoot;
+    private PlayerInput.OnFootActions onFootActions;
+    private PlayerInput.WeaponActions weaponActions;
     private Camera cam;
     private Ray gunRay;
+    private TextMeshProUGUI bulletsLeftLabel;
 
     private bool isReloading;
     private float timeSinceLastShot;
     private int bulletsLeft, totalBulletsLeft;
 
     [SerializeField] private BaseGunInfo gunInfo;
-    [SerializeField] private TextMeshProUGUI bulletsLeftLabel;
 
     private void Awake()
     {
         playerInput = new PlayerInput();
         
         // Setting variables
-        cam = transform.parent.GetComponent<Camera>();
+        cam = transform.parent.parent.GetComponent<Camera>();
+        bulletsLeftLabel = transform.parent.GetComponent<GunSwitcher>().bulletsLeftLabel;
         
         // Initialize variables
-        onFoot = playerInput.OnFoot;
+        onFootActions = playerInput.OnFoot;
+        weaponActions = playerInput.Weapon;
         bulletsLeft = gunInfo.bullets;
         totalBulletsLeft = gunInfo.totalBullets;
 
         // Reload
-        onFoot.Reload.performed += ctx => StartCoroutine(Reload());
-
+        weaponActions.Reload.performed += ctx => StartCoroutine(Reload());
     }
 
     private void Update()
@@ -47,7 +49,7 @@ public class BaseGun : MonoBehaviour
     private void Fire()
     {
         if (bulletsLeft == 0) StartCoroutine(Reload());
-        if (isReloading || timeSinceLastShot < gunInfo.intervalBetweenShots) return;
+        if (isReloading || timeSinceLastShot < gunInfo.intervalBetweenShots || totalBulletsLeft == 0 && bulletsLeft == 0) return;
         
         bulletsLeft--;
         timeSinceLastShot = 0;
@@ -80,11 +82,13 @@ public class BaseGun : MonoBehaviour
 
     private void OnEnable()
     {
-        onFoot.Enable();
+        onFootActions.Enable();
+        weaponActions.Enable();
     }
 
     private void OnDisable()
     {
-        onFoot.Disable();
+        onFootActions.Disable();
+        weaponActions.Disable();
     }
 }

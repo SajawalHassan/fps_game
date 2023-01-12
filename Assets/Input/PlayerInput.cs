@@ -53,24 +53,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Fire"",
-                    ""type"": ""Button"",
-                    ""id"": ""bd9b1832-e454-4010-a292-a3458961bbe8"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Reload"",
-                    ""type"": ""Button"",
-                    ""id"": ""a640e931-22a2-4499-a9dd-38d2c9217f87"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -161,26 +143,92 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Weapon"",
+            ""id"": ""13a660c1-fb75-4de2-907b-b6f9a5677550"",
+            ""actions"": [
+                {
+                    ""name"": ""Slot1"",
+                    ""type"": ""Button"",
+                    ""id"": ""c73bd277-cecc-4826-826d-bbc0370afdc9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Slot2"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea0bcfc0-7f00-4712-8e5b-2a3e09e4380a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Slot3"",
+                    ""type"": ""Button"",
+                    ""id"": ""83484859-5d3a-4afe-bc65-0c7b5e8a40a3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""52297063-ec8f-42b8-957a-1f10f170fdb6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
                     ""name"": """",
-                    ""id"": ""ec33c17e-06bd-4cf2-abc4-9965d8bc9d97"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""42f68095-2a9b-4870-a063-e72777bb7951"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Slot1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""232c1fda-6926-4647-bc11-8b7ff1f0e848"",
+                    ""id"": ""9a950c5f-3d5f-4520-8ba6-5367180f4efe"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""664476c9-6646-4a19-b72b-b053865334b3"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Slot2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""042f637a-9208-4b13-baac-138b10f73e18"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Slot3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -194,8 +242,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OnFoot_Movement = m_OnFoot.FindAction("Movement", throwIfNotFound: true);
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
         m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
-        m_OnFoot_Fire = m_OnFoot.FindAction("Fire", throwIfNotFound: true);
-        m_OnFoot_Reload = m_OnFoot.FindAction("Reload", throwIfNotFound: true);
+        // Weapon
+        m_Weapon = asset.FindActionMap("Weapon", throwIfNotFound: true);
+        m_Weapon_Slot1 = m_Weapon.FindAction("Slot1", throwIfNotFound: true);
+        m_Weapon_Slot2 = m_Weapon.FindAction("Slot2", throwIfNotFound: true);
+        m_Weapon_Slot3 = m_Weapon.FindAction("Slot3", throwIfNotFound: true);
+        m_Weapon_Reload = m_Weapon.FindAction("Reload", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -258,8 +310,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Movement;
     private readonly InputAction m_OnFoot_Jump;
     private readonly InputAction m_OnFoot_Look;
-    private readonly InputAction m_OnFoot_Fire;
-    private readonly InputAction m_OnFoot_Reload;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -267,8 +317,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_OnFoot_Movement;
         public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
         public InputAction @Look => m_Wrapper.m_OnFoot_Look;
-        public InputAction @Fire => m_Wrapper.m_OnFoot_Fire;
-        public InputAction @Reload => m_Wrapper.m_OnFoot_Reload;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -287,12 +335,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Look.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnLook;
-                @Fire.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnFire;
-                @Reload.started -= m_Wrapper.m_OnFootActionsCallbackInterface.OnReload;
-                @Reload.performed -= m_Wrapper.m_OnFootActionsCallbackInterface.OnReload;
-                @Reload.canceled -= m_Wrapper.m_OnFootActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_OnFootActionsCallbackInterface = instance;
             if (instance != null)
@@ -306,22 +348,78 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Fire.started += instance.OnFire;
-                @Fire.performed += instance.OnFire;
-                @Fire.canceled += instance.OnFire;
+            }
+        }
+    }
+    public OnFootActions @OnFoot => new OnFootActions(this);
+
+    // Weapon
+    private readonly InputActionMap m_Weapon;
+    private IWeaponActions m_WeaponActionsCallbackInterface;
+    private readonly InputAction m_Weapon_Slot1;
+    private readonly InputAction m_Weapon_Slot2;
+    private readonly InputAction m_Weapon_Slot3;
+    private readonly InputAction m_Weapon_Reload;
+    public struct WeaponActions
+    {
+        private @PlayerInput m_Wrapper;
+        public WeaponActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Slot1 => m_Wrapper.m_Weapon_Slot1;
+        public InputAction @Slot2 => m_Wrapper.m_Weapon_Slot2;
+        public InputAction @Slot3 => m_Wrapper.m_Weapon_Slot3;
+        public InputAction @Reload => m_Wrapper.m_Weapon_Reload;
+        public InputActionMap Get() { return m_Wrapper.m_Weapon; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(WeaponActions set) { return set.Get(); }
+        public void SetCallbacks(IWeaponActions instance)
+        {
+            if (m_Wrapper.m_WeaponActionsCallbackInterface != null)
+            {
+                @Slot1.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSlot1;
+                @Slot1.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSlot1;
+                @Slot1.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSlot1;
+                @Slot2.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSlot2;
+                @Slot2.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSlot2;
+                @Slot2.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSlot2;
+                @Slot3.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSlot3;
+                @Slot3.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSlot3;
+                @Slot3.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSlot3;
+                @Reload.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnReload;
+            }
+            m_Wrapper.m_WeaponActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Slot1.started += instance.OnSlot1;
+                @Slot1.performed += instance.OnSlot1;
+                @Slot1.canceled += instance.OnSlot1;
+                @Slot2.started += instance.OnSlot2;
+                @Slot2.performed += instance.OnSlot2;
+                @Slot2.canceled += instance.OnSlot2;
+                @Slot3.started += instance.OnSlot3;
+                @Slot3.performed += instance.OnSlot3;
+                @Slot3.canceled += instance.OnSlot3;
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
             }
         }
     }
-    public OnFootActions @OnFoot => new OnFootActions(this);
+    public WeaponActions @Weapon => new WeaponActions(this);
     public interface IOnFootActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnFire(InputAction.CallbackContext context);
+    }
+    public interface IWeaponActions
+    {
+        void OnSlot1(InputAction.CallbackContext context);
+        void OnSlot2(InputAction.CallbackContext context);
+        void OnSlot3(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
     }
 }

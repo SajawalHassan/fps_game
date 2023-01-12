@@ -355,6 +355,7 @@
 "Assets/Scripts/Enemy/Enemy.cs"
 "Assets/Scripts/Gun/BaseGun.cs"
 "Assets/Scripts/Gun/BaseGunInfo.cs"
+"Assets/Scripts/Gun/GunSwitcher.cs"
 "Assets/Scripts/Input/InputManager.cs"
 "Assets/Scripts/Player/PlayerLook.cs"
 "Assets/Scripts/Player/PlayerMotor.cs"
