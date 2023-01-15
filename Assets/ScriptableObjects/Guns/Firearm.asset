@@ -22,8 +22,8 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 64
-  recoilX: 20
-  recoilY: 20
+  recoilX: -10
+  recoilY: 5
   recoilZ: 2
   snappiness: 14
   returnSpeed: 8
