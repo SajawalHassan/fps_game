@@ -18,6 +18,12 @@ MonoBehaviour:
   reloadTime: 1
   attackRange: 200
   intervalBetweenShots: 0.06
+  recoilForce: 1
   targetMask:
     serializedVersion: 2
     m_Bits: 64
+  recoilX: -10
+  recoilY: 10
+  recoilZ: 1
+  snappiness: 10
+  returnSpeed: 6

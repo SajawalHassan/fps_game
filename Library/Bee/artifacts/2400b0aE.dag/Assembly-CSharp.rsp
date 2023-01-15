@@ -353,12 +353,15 @@
 -r:"Library/Bee/artifacts/2400b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Input/PlayerInput.cs"
 "Assets/Scripts/Enemy/Enemy.cs"
-"Assets/Scripts/Gun/BaseGun.cs"
-"Assets/Scripts/Gun/BaseGunInfo.cs"
-"Assets/Scripts/Gun/GunSwitcher.cs"
 "Assets/Scripts/Input/InputManager.cs"
 "Assets/Scripts/Player/PlayerLook.cs"
 "Assets/Scripts/Player/PlayerMotor.cs"
+"Assets/Scripts/Weapons/BaseWeapon.cs"
+"Assets/Scripts/Weapons/Gun/BaseGun.cs"
+"Assets/Scripts/Weapons/Gun/BaseGunInfo.cs"
+"Assets/Scripts/Weapons/Gun/BaseGunRecoil.cs"
+"Assets/Scripts/Weapons/WeaponSway.cs"
+"Assets/Scripts/Weapons/WeaponSwitcher.cs"
 -langversion:9.0
 
 /deterministic

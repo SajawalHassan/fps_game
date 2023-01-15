@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d4056431d3e5cdda756a0eb5e060e1, type: 3}
   m_Name: Firearm
   m_EditorClassIdentifier: 
-  bullets: 1
-  totalBullets: 1
+  bullets: 100
+  totalBullets: 10
   damage: 15
   reloadTime: 2
   attackRange: 500
   intervalBetweenShots: 0.08
+  recoilForce: 0.2
   targetMask:
     serializedVersion: 2
     m_Bits: 64
+  recoilX: 20
+  recoilY: 20
+  recoilZ: 2
+  snappiness: 14
+  returnSpeed: 8

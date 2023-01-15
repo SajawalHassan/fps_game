@@ -38,10 +38,13 @@
   <ItemGroup>
      <Compile Include="Assets/Scripts/Player/PlayerLook.cs" />
      <Compile Include="Assets/Scripts/Enemy/Enemy.cs" />
-     <Compile Include="Assets/Scripts/Gun/BaseGunInfo.cs" />
+     <Compile Include="Assets/Scripts/Weapons/Gun/BaseGunInfo.cs" />
+     <Compile Include="Assets/Scripts/Weapons/WeaponSway.cs" />
+     <Compile Include="Assets/Scripts/Weapons/Gun/BaseGunRecoil.cs" />
+     <Compile Include="Assets/Scripts/Weapons/BaseWeapon.cs" />
      <Compile Include="Assets/Scripts/Input/InputManager.cs" />
-     <Compile Include="Assets/Scripts/Gun/BaseGun.cs" />
-     <Compile Include="Assets/Scripts/Gun/GunSwitcher.cs" />
+     <Compile Include="Assets/Scripts/Weapons/Gun/BaseGun.cs" />
+     <Compile Include="Assets/Scripts/Weapons/WeaponSwitcher.cs" />
      <Compile Include="Assets/Scripts/Player/PlayerMotor.cs" />
      <Compile Include="Assets/Input/PlayerInput.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
